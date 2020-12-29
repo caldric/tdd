@@ -1,0 +1,8 @@
+{
+  "name": "tdd",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/caldric/tdd.git",
+  "author": "caldric <cvaldric@gmail.com>",
+  "license": "MIT"
+}
