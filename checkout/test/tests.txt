@@ -1,7 +1,7 @@
 x Can create an instance of the Checkout class
 x Can add an item price
 x Can add an item
-- Can calculate the current total
+x Can calculate the current total
 - Can add multiple items and get correct total
 - Can add discount rules
 - Can apply discount rules to the total

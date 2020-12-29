@@ -8,16 +8,10 @@ describe('Checkout cart', () => {
     checkout = new Checkout()
   })
 
-  it('Adds item price', () => {
-    checkout.addItemPrice('a', 1)
-  })
-
-  it('Adds an item', () => {
-    checkout.addItem('a')
-  })
-
   it('Calculates the current item price total', () => {
-    checkout.addItemPrice('a', 1)
+    const newItem = { name: 'a', price: 1 }
+    checkout.addItem(newItem.name)
+    checkout.addItemPrice(newItem.name, newItem.price)
     const total = checkout.calculateTotal()
     expect(total).to.equal(1)
   })
