@@ -32,4 +32,10 @@ describe('Checkout cart', () => {
   it('Adds discount rule', () => {
     checkout.addDiscount('a', 3, 2)
   })
+
+  it('Applies discount item prices to the total', () => {
+    checkout.addDiscount('a', 3, 2)
+    const total = checkout.calculateTotal()
+    expect(total).to.equal(2)
+  })
 })
