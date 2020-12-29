@@ -10,8 +10,7 @@ describe('Checkout cart', () => {
 
   it('Calculates the current item price total', () => {
     const newItem = { name: 'a', price: 1 }
-    checkout.addItem(newItem.name)
-    checkout.addItemPrice(newItem.name, newItem.price)
+    checkout.addItem(newItem.name, newItem.price)
     const total = checkout.calculateTotal()
     expect(total).to.equal(1)
   })
@@ -22,13 +21,10 @@ describe('Checkout cart', () => {
     const secondItem = { name: 'b', price: 2 }
 
     // Add items in checkout
-    checkout.addItem(firstItem.name)
-    checkout.addItem(secondItem.name)
+    checkout.addItem(firstItem.name, firstItem.price)
+    checkout.addItem(secondItem.name, secondItem.price)
 
-    // Add item prices
-    checkout.addItemPrice(firstItem.name, firstItem.price)
-    checkout.addItemPrice(secondItem.name, secondItem.price)
-
+    // Create assertion
     const total = checkout.calculateTotal()
     expect(total).to.equal(3)
   })
