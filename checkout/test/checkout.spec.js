@@ -28,4 +28,8 @@ describe('Checkout cart', () => {
     const total = checkout.calculateTotal()
     expect(total).to.equal(3)
   })
+
+  it('Adds discount rule', () => {
+    checkout.addDiscount('a', 3, 2)
+  })
 })
