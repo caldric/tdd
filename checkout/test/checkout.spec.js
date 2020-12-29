@@ -15,4 +15,21 @@ describe('Checkout cart', () => {
     const total = checkout.calculateTotal()
     expect(total).to.equal(1)
   })
+
+  it('Calculates the correct total from adding multiple items', () => {
+    // Create item objects
+    const firstItem = { name: 'a', price: 1 }
+    const secondItem = { name: 'b', price: 2 }
+
+    // Add items in checkout
+    checkout.addItem(firstItem.name)
+    checkout.addItem(secondItem.name)
+
+    // Add item prices
+    checkout.addItemPrice(firstItem.name, firstItem.price)
+    checkout.addItemPrice(secondItem.name, secondItem.price)
+
+    const total = checkout.calculateTotal()
+    expect(total).to.equal(3)
+  })
 })
