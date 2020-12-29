@@ -15,4 +15,10 @@ describe('Checkout cart', () => {
   it('Adds an item', () => {
     checkout.addItem('a')
   })
+
+  it('Calculates the current item price total', () => {
+    checkout.addItemPrice('a', 1)
+    const total = checkout.calculateTotal()
+    expect(total).to.equal(1)
+  })
 })
