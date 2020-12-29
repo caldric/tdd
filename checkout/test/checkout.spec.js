@@ -9,20 +9,29 @@ describe('Checkout cart', () => {
   })
 
   it('Calculates the current item price total', () => {
+    // Create item
     const newItem = { name: 'a', price: 1 }
+
+    // Add item to checkout
     checkout.addItem(newItem.name, newItem.price)
+
+    // Create assertion
     const total = checkout.calculateTotal()
     expect(total).to.equal(1)
   })
 
   it('Calculates the correct total from adding multiple items', () => {
     // Create item objects
-    const firstItem = { name: 'a', price: 1 }
-    const secondItem = { name: 'b', price: 2 }
+    const items = [
+      { name: 'a', price: 1 },
+      { name: 'b', price: 2 },
+    ]
 
     // Add items in checkout
-    checkout.addItem(firstItem.name, firstItem.price)
-    checkout.addItem(secondItem.name, secondItem.price)
+    for (const item of items) {
+      const { name, price } = item
+      checkout.addItem(name, price)
+    }
 
     // Create assertion
     const total = checkout.calculateTotal()
@@ -34,7 +43,10 @@ describe('Checkout cart', () => {
   })
 
   it('Applies discount item prices to the total', () => {
+    // Add discounted items to checkout
     checkout.addDiscount('a', 3, 2)
+
+    // Create assertion
     const total = checkout.calculateTotal()
     expect(total).to.equal(2)
   })

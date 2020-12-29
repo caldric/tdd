@@ -4,8 +4,7 @@ module.exports = class Checkout {
   }
 
   addItem(name, price) {
-    const newItem = { name, price }
-    this.items.push(newItem)
+    this.items.push({ name, price })
   }
 
   calculateTotal() {
@@ -14,8 +13,7 @@ module.exports = class Checkout {
 
   addDiscount(itemName, qty, totalPrice) {
     for (let i = 0; i < qty; i++) {
-      const newItem = { name: itemName, price: totalPrice / qty }
-      this.items.push(newItem)
+      this.items.push({ name: itemName, price: totalPrice / qty })
     }
   }
 }
