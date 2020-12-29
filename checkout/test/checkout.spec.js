@@ -6,4 +6,10 @@ describe('Checkout cart', () => {
     const checkout = new Checkout()
     checkout.addItemPrice('a', 1)
   })
+
+  it('Adds an item', () => {
+    const checkout = new Checkout()
+    checkout.addItemPrice('a', 1)
+    checkout.addItem('a')
+  })
 })
