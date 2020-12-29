@@ -4,5 +4,9 @@
   "main": "index.js",
   "repository": "https://github.com/caldric/tdd.git",
   "author": "caldric <cvaldric@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^8.2.1"
+  }
 }
