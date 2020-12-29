@@ -12,5 +12,10 @@ module.exports = class Checkout {
     return this.items.reduce((total, { price }) => total + price, 0)
   }
 
-  addDiscount() {}
+  addDiscount(itemName, qty, totalPrice) {
+    for (let i = 0; i < qty; i++) {
+      const newItem = { name: itemName, price: totalPrice / qty }
+      this.items.push(newItem)
+    }
+  }
 }
