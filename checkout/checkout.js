@@ -1,1 +1,3 @@
-module.exports = class Checkout {}
+module.exports = class Checkout {
+  addItemPrice() {}
+}
