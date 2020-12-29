@@ -11,4 +11,6 @@ module.exports = class Checkout {
   calculateTotal() {
     return this.items.reduce((total, { price }) => total + price, 0)
   }
+
+  addDiscount() {}
 }
