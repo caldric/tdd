@@ -50,4 +50,8 @@ describe('Checkout cart', () => {
     const total = checkout.calculateTotal()
     expect(total).to.equal(2)
   })
+
+  it('Throws an error when an item is added with no price', () => {
+    expect(() => checkout.addItem('a')).to.throw()
+  })
 })
