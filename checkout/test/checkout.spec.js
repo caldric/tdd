@@ -13,7 +13,8 @@ describe('Checkout cart', () => {
     const newItem = { name: 'a', price: 1 }
 
     // Add item to checkout
-    checkout.addItem(newItem.name, newItem.price)
+    const { name, price } = newItem
+    checkout.addItem(name, price)
 
     // Create assertion
     const total = checkout.calculateTotal()
