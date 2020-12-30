@@ -4,6 +4,7 @@ module.exports = class Checkout {
   }
 
   addItem(name, price) {
+    if (price === undefined) throw new Error('No price defined for item')
     this.items.push({ name, price })
   }
 
