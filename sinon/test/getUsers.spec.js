@@ -32,4 +32,9 @@ describe('Get users', () => {
     getUsers(spy)
     request.get.should.have.been.calledWith('https://www.mysite.com/api/users')
   })
+
+  it('Returns correct data', () => {
+    getUsers(spy)
+    spy.should.have.been.calledWith({ users: ['user1', 'user2'] })
+  })
 })
