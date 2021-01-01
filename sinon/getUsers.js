@@ -1,1 +1,3 @@
-module.exports = getUsers = (callback) => {}
+module.exports = getUsers = (callback) => {
+  if (typeof callback === 'function') callback()
+}
