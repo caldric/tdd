@@ -10,10 +10,6 @@ chai.should()
 chai.use(sinonChai)
 
 describe('Get users', () => {
-  it('Calls getUsers function', () => {
-    getUsers()
-  })
-
   it('Calls the callback once', () => {
     const spy = sinon.spy()
     getUsers(spy)
