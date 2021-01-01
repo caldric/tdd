@@ -15,4 +15,13 @@ describe('Get users', () => {
     getUsers(spy)
     spy.should.have.been.calledOnce
   })
+
+  it('Calls the correct URL', () => {
+    const spy = sinon.spy()
+    sinon.stub(request, 'get').callsFake((url, callback) => {
+      callback({}, { body: '{"users": ["user1", "user2"]}' })
+    })
+    getUsers(spy)
+    request.get.should.have.been.calledWith('https://www.mysite.com/api/users')
+  })
 })
