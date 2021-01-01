@@ -1,4 +1,4 @@
 x Can call getUsers
 x Verify callback is called once
 x Verify correct URL is called
-- Verify callback returns correct data
+x Verify callback returns correct data

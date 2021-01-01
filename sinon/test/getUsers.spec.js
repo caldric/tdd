@@ -1,8 +1,8 @@
 const chai = require('chai')
-const expect = chai.expect
+const expect = require('chai').expect
+const request = require('request')
 const sinon = require('sinon')
 const sinonChai = require('sinon-chai')
-const request = require('request')
 
 const getUsers = require('../getUsers')
 
@@ -17,6 +17,7 @@ describe('Get users', () => {
     sinon.stub(request, 'get').callsFake((_, callback) => {
       callback({}, { body: '{"users": ["user1", "user2"]}' })
     })
+    getUsers(spy)
   })
 
   afterEach(() => {
@@ -24,17 +25,14 @@ describe('Get users', () => {
   })
 
   it('Calls the callback once', () => {
-    getUsers(spy)
     spy.should.have.been.calledOnce
   })
 
   it('Calls the correct URL', () => {
-    getUsers(spy)
     request.get.should.have.been.calledWith('https://www.mysite.com/api/users')
   })
 
   it('Returns correct data', () => {
-    getUsers(spy)
     spy.should.have.been.calledWith({ users: ['user1', 'user2'] })
   })
 })
