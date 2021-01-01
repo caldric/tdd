@@ -4,6 +4,8 @@ const sinon = require('sinon')
 const sinonChai = require('sinon-chai')
 const request = require('request')
 
+const getUsers = require('../getUsers')
+
 chai.should()
 chai.use(sinonChai)
 
