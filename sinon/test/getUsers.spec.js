@@ -13,4 +13,10 @@ describe('Get users', () => {
   it('Calls getUsers function', () => {
     getUsers()
   })
+
+  it('Calls the callback once', () => {
+    const spy = sinon.spy()
+    getUsers(spy)
+    spy.should.have.been.calledOnce
+  })
 })
