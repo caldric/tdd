@@ -66,14 +66,22 @@ test("Decrement button decrements the counter if it's positive", () => {
   // Click decrement button
   decrementButton.simulate('click')
 
-  // Test that the counter has been decremented to 2
+  // Test that the counter has been decremented to 0
   counter = findByTestAttr(wrapper, 'count').text()
   expect(counter).toBe('0')
 })
 
-// test('Decrement button does not let the counter go negative', () => {
-//   // Write test here
-// })
+test('Decrement button does not let the counter go negative', () => {
+  // Find the decrement button
+  const decrementButton = findByTestAttr(wrapper, 'decrement-button')
+
+  // Click decrement button
+  decrementButton.simulate('click')
+
+  // Test that the counter has been decremented to 0
+  const counter = findByTestAttr(wrapper, 'count').text()
+  expect(counter).toBe('0')
+})
 
 // test('Clicking decrement while the counter is at 0 prints an error message', () => {
 //   // Write test here
