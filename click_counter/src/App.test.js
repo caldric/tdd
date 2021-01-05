@@ -33,4 +33,14 @@ test('Counter starts at 0', () => {
   expect(count).toBe('0')
 })
 
-// test('Clicking on button increments counter display', () => {})
+test('Clicking on button increments counter display', () => {
+  // Find the button
+  const incrementButton = findByTestAttr(wrapper, 'increment-button')
+
+  // Click the button
+  incrementButton.simulate('click')
+
+  // Find the display, and test that the number has been incremented
+  const count = findByTestAttr(wrapper, 'count').text()
+  expect(count).toBe('1')
+})
