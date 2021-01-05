@@ -94,3 +94,21 @@ test('Renders an error message when clicking decrement while the counter is at 0
   const decrementError = findByTestAttr(wrapper, 'decrement-error')
   expect(decrementError.length).toBe(1)
 })
+
+test('Removes error message when clicking increment button', () => {
+  // Find the decrement button
+  const decrementButton = findByTestAttr(wrapper, 'decrement-button')
+
+  // Click decrement button
+  decrementButton.simulate('click')
+
+  // Find the increment button
+  const incrementButton = findByTestAttr(wrapper, 'increment-button')
+
+  // Click the increment button
+  incrementButton.simulate('click')
+
+  // Test that the decrement error message has been cleared
+  const decrementError = findByTestAttr(wrapper, 'decrement-error')
+  expect(decrementError.length).toBe(0)
+})
