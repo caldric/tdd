@@ -44,3 +44,19 @@ test('Clicking on button increments counter display', () => {
   const count = findByTestAttr(wrapper, 'count').text()
   expect(count).toBe('1')
 })
+
+// test('Renders decrement counter button', () => {
+//   // Write test here
+// })
+
+// test('Decrement button does not let the counter go negative', () => {
+//   // Write test here
+// })
+
+// test('Clicking decrement while the counter is at 0 prints an error message', () => {
+//   // Write test here
+// })
+
+// test("Decrement button decrements the counter if it's positive", () => {
+//   // Write test here
+// })
