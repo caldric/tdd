@@ -13,7 +13,7 @@
     "sinon-chai": "^3.5.0"
   },
   "scripts": {
-    "test": "mocha"
+    "test": "jest --watch"
   },
   "dependencies": {
     "request": "^2.88.2"
