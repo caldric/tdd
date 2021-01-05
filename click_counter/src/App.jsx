@@ -15,7 +15,11 @@ const App = () => {
       >
         Increment counter
       </button>
-      <button type="button" data-test="decrement-button">
+      <button
+        type="button"
+        data-test="decrement-button"
+        onClick={() => setCounter(counter - 1)}
+      >
         Decrement counter
       </button>
     </div>
