@@ -11,18 +11,7 @@ test('Renders <App /> without errors', () => {
   expect(appComponent.length).toBe(1)
 })
 
-test('Renders increment counter button', () => {
-  expect(false).toBe(true)
-})
-
-test('Renders counter display', () => {
-  expect(false).toBe(true)
-})
-
-test('Counter starts at 0', () => {
-  expect(false).toBe(true)
-})
-
-test('Clicking on button increments counter display', () => {
-  expect(false).toBe(true)
-})
+// test('Renders increment counter button', () => {})
+// test('Renders counter display', () => {})
+// test('Counter starts at 0', () => {})
+// test('Clicking on button increments counter display', () => {})
