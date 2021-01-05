@@ -32,4 +32,5 @@ test('Counter starts at 0', () => {
   const count = findByTestAttr(wrapper, 'count').text()
   expect(count).toBe('0')
 })
+
 // test('Clicking on button increments counter display', () => {})
