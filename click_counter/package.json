@@ -92,10 +92,8 @@
     ]
   },
   "devDependencies": {
-    "@babel/core": "^7.12.10",
     "@babel/preset-env": "^7.12.11",
     "@babel/preset-react": "^7.12.10",
-    "babel-jest": "^26.6.3",
     "babel-plugin-react-remove-properties": "^0.3.0",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.5",
@@ -154,6 +152,20 @@
     "resetMocks": true
   },
   "babel": {
+    "env": {
+      "production": {
+        "plugins": [
+          [
+            "react-remove-properties",
+            {
+              "properties": [
+                "data-test"
+              ]
+            }
+          ]
+        ]
+      }
+    },
     "presets": [
       "react-app"
     ]
