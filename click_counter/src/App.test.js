@@ -83,6 +83,14 @@ test('Decrement button does not let the counter go negative', () => {
   expect(counter).toBe('0')
 })
 
-// test('Clicking decrement while the counter is at 0 prints an error message', () => {
-//   // Write test here
-// })
+test('Prints an error message when clicking decrement while the counter is at 0', () => {
+  // Find the decrement button
+  const decrementButton = findByTestAttr(wrapper, 'decrement-button')
+
+  // Click decrement button
+  decrementButton.simulate('click')
+
+  // Test that the decrement error message has been generated
+  const decrementError = findByTestAttr(wrapper, 'decrement-error')
+  expect(decrementError.text()).toBe('The counter cannot go below 0')
+})
