@@ -4,6 +4,11 @@ const App = () => {
   const [counter, setCounter] = useState(0)
   const [decrementErr, setDecrementErr] = useState(false)
 
+  const increment = () => {
+    setCounter(counter + 1)
+    setDecrementErr(false)
+  }
+
   const decrement = () => {
     if (counter > 0) {
       setCounter(counter - 1)
@@ -20,11 +25,7 @@ const App = () => {
       {decrementErr ? (
         <p data-test="decrement-error">The counter cannot go below 0</p>
       ) : null}
-      <button
-        data-test="increment-button"
-        type="button"
-        onClick={() => setCounter(counter + 1)}
-      >
+      <button data-test="increment-button" type="button" onClick={increment}>
         Increment counter
       </button>
       <button type="button" data-test="decrement-button" onClick={decrement}>
