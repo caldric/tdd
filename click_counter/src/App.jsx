@@ -1,12 +1,18 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 const App = () => {
+  const [counter, setCounter] = useState(0)
+
   return (
     <div data-test="component-app">
       <h1 data-test="counter-display">
-        The counter is currently <span data-test="count">0</span>
+        The counter is currently <span data-test="count">{counter}</span>
       </h1>
-      <button data-test="increment-button" type="button">
+      <button
+        data-test="increment-button"
+        type="button"
+        onClick={() => setCounter(counter + 1)}
+      >
         Increment counter
       </button>
     </div>
