@@ -15,6 +15,9 @@ const App = () => {
       >
         Increment counter
       </button>
+      <button type="button" data-test="decrement-button">
+        Decrement counter
+      </button>
     </div>
   )
 }
