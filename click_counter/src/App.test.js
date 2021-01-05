@@ -11,7 +11,11 @@ test('Renders <App /> without errors', () => {
   expect(appComponent.length).toBe(1)
 })
 
-// test('Renders increment counter button', () => {})
+test('Renders increment counter button', () => {
+  const wrapper = shallow(<App />)
+  const incrementButton = wrapper.find("[data-test='increment-button']")
+  expect(incrementButton.length).toBe(1)
+})
 // test('Renders counter display', () => {})
 // test('Counter starts at 0', () => {})
 // test('Clicking on button increments counter display', () => {})
