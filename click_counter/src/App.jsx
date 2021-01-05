@@ -20,7 +20,7 @@ const App = () => {
   return (
     <div data-test="component-app">
       <h1 data-test="counter-display">
-        The counter is currently <span data-test="count">{counter}</span>
+        The counter is currently <span data-test="counter">{counter}</span>
       </h1>
       {decrementErr ? (
         <p data-test="decrement-error">The counter cannot go below 0</p>
