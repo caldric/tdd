@@ -18,7 +18,11 @@ const App = () => {
       <button
         type="button"
         data-test="decrement-button"
-        onClick={() => setCounter(counter - 1)}
+        onClick={() => {
+          if (counter > 0) {
+            setCounter(counter - 1)
+          }
+        }}
       >
         Decrement counter
       </button>
