@@ -22,6 +22,9 @@ test('Renders increment counter button', () => {
   expect(incrementButton.length).toBe(1)
 })
 
-// test('Renders counter display', () => {})
+test('Renders counter display', () => {
+  const counterDisplay = wrapper.find("[data-test='counter-display']")
+  expect(counterDisplay.length).toBe(1)
+})
 // test('Counter starts at 0', () => {})
 // test('Clicking on button increments counter display', () => {})
