@@ -18,3 +18,16 @@ test('Renders instructions to guess a word at initial load', () => {
   const instructions = findByTestAttr(wrapper, 'guess-instructions')
   expect(instructions.text().length).not.toBe(0)
 })
+
+describe('If there are guesses', () => {
+  test('Renders "guessed words" section', () => {
+    const guesses = [
+      { word: 'train', letterMatches: 3 },
+      { word: 'agile', letterMacthes: 1 },
+      { word: 'party', letterMacthes: 5 },
+    ]
+    const wrapper = setup()
+    const guessedWords = findByTestAttr(wrapper, 'guessed-words')
+    expect(guessedWords.length).toBe(1)
+  })
+})
