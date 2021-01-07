@@ -6,4 +6,12 @@ import Congrats from './Congrats'
 
 Enzyme.configure({ adapter: new EnzymeAdapter() })
 
-test('', () => {})
+const setup = (props = {}) => {
+  return shallow(<Congrats {...props} />)
+}
+
+test('Renders without errors', () => {
+  const wrapper = setup()
+  const component = findByTestAttr(wrapper, 'component-congrats')
+  expect(component.length).toBe(1)
+})
