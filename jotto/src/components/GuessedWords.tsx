@@ -7,7 +7,7 @@ interface Props {
 const GuessedWords: React.FC<Props> = ({ guesses = [] }) => {
   const renderInstructions = (): JSX.Element | null =>
     guesses.length === 0 ? (
-      <span data-test="guess-instructions">Instructions</span>
+      <span data-test="guess-instructions">Try to guess the secret word!</span>
     ) : null
 
   const renderGuesses = (): JSX.Element | null =>
