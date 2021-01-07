@@ -14,8 +14,8 @@ const GuessedWords: React.FC<Props> = ({ guesses = [] }) => {
     guesses.length > 0 ? (
       <div data-test="guesses">
         <h2>Guessed Words</h2>
-        <table>
-          <thead>
+        <table className="table table-sm">
+          <thead className="thead-light">
             <tr>
               <th>Guess</th>
               <th>Matching Letters</th>

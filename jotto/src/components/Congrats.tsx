@@ -13,7 +13,14 @@ const Congrats: React.FC<Props> = ({ success = false }) => {
     ) : null
   }
 
-  return <div data-test="component-congrats">{successMessage()}</div>
+  return (
+    <div
+      data-test="component-congrats"
+      className={success ? 'alert alert-success' : ''}
+    >
+      {successMessage()}
+    </div>
+  )
 }
 
 export default Congrats

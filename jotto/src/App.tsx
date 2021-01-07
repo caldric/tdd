@@ -2,11 +2,12 @@ import React from 'react'
 
 import Congrats from './components/Congrats'
 import GuessedWords from './components/GuessedWords'
+import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.css'
 
 const App: React.FC = () => {
   return (
-    <div className="App">
+    <div className="container">
       <h1>Jotto</h1>
       <Congrats success={true} />
       <GuessedWords
