@@ -5,11 +5,11 @@ interface Props {
 }
 
 const Congrats: React.FC<Props> = ({ success }) => {
-  if (!success) {
-    return <div data-test="component-congrats"></div>
+  const successMessage = (): string => {
+    return success ? 'Congrats' : ''
   }
 
-  return <div data-test="component-congrats">Congrats</div>
+  return <div data-test="component-congrats">{successMessage()}</div>
 }
 
 export default Congrats
