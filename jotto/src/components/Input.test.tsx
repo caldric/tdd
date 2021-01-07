@@ -13,8 +13,16 @@ const setup = (initialState: RootState) => {
 }
 // setup({ success: false }) // for debugging purposes
 
-test('Renders component without errors', () => {
-  const wrapper = setup({ success: false })
-  const component = findByTestAttr(wrapper, 'component-input')
-  expect(component.length).toBe(1)
+describe('No guesses have been made', () => {
+  test('Renders component without errors', () => {
+    const wrapper = setup({ success: false })
+    const component = findByTestAttr(wrapper, 'component-input')
+    expect(component.length).toBe(1)
+  })
+
+  test('Renders input box', () => {
+    const wrapper = setup({ success: false })
+    const inputBox = findByTestAttr(wrapper, 'input-box')
+    expect(inputBox.length).toBe(1)
+  })
 })
