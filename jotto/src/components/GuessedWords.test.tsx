@@ -21,10 +21,10 @@ test('Renders instructions to guess a word at initial load', () => {
 
 describe('If there are guesses', () => {
   test('Renders "guessed words" section', () => {
-    const guesses = [
+    const guesses: Guess[] = [
       { word: 'train', letterMatches: 3 },
-      { word: 'agile', letterMacthes: 1 },
-      { word: 'party', letterMacthes: 5 },
+      { word: 'agile', letterMatches: 1 },
+      { word: 'party', letterMatches: 5 },
     ]
     const wrapper = setup()
     const guessedWords = findByTestAttr(wrapper, 'guessed-words')
