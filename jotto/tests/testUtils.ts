@@ -1,4 +1,4 @@
-import { createStore } from '@reduxjs/toolkit'
+import { createStore } from 'redux'
 import { ShallowWrapper } from 'enzyme'
 import rootReducer from '../src/reducers'
 
