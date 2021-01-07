@@ -7,7 +7,7 @@ const Input: React.FC<Props> = () => {
   return <div></div>
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state: RootState) => {
   return {}
 }
 
