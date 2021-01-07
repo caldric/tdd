@@ -28,4 +28,9 @@ describe('No guesses have been made', () => {
     const inputBox = findByTestAttr(wrapper, 'input-box')
     expect(inputBox.length).toBe(1)
   })
+
+  test('Renders submit button', () => {
+    const submitButton = findByTestAttr(wrapper, 'submit-button')
+    expect(submitButton.length).toBe(1)
+  })
 })
