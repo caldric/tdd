@@ -40,5 +40,11 @@ describe('No guesses have been made', () => {
       const component = findByTestAttr(wrapper, 'component-input')
       expect(component.length).toBe(1)
     })
+
+    test('Does not render input box', () => {
+      const wrapper = setup({ success: true })
+      const inputBox = findByTestAttr(wrapper, 'input-box')
+      expect(inputBox.length).toBe(0)
+    })
   })
 })
