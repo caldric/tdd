@@ -12,3 +12,9 @@ test('Renders without errors', () => {
   const component = findByTestAttr(wrapper, 'component-guessed-words')
   expect(component.length).toBe(1)
 })
+
+test('Renders instructions to guess a word at initial load', () => {
+  const wrapper = setup()
+  const instructions = findByTestAttr(wrapper, 'guess-instructions')
+  expect(instructions.text().length).not.toBe(0)
+})
