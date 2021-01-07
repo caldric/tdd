@@ -8,9 +8,18 @@ interface Props {
 const Input: React.FC<Props> = ({ success }) => {
   const renderForm = () =>
     !success ? (
-      <form>
-        <input data-test="input-box" type="text" />
-        <button data-test="submit-button" type="submit">
+      <form className="form-inline">
+        <input
+          data-test="input-box"
+          className="mb-2 mx-sm-3"
+          type="text"
+          placeholder="Enter guess"
+        />
+        <button
+          data-test="submit-button"
+          className="btn btn-primary mb-2"
+          type="submit"
+        >
           Submit
         </button>
       </form>
