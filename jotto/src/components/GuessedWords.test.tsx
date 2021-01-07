@@ -1,5 +1,5 @@
 import React from 'react'
-import { shallow } from 'enzyme'
+import { shallow, ShallowWrapper } from 'enzyme'
 import { findByTestAttr } from '../../tests/testUtils'
 import GuessedWords from './GuessedWords'
 
@@ -28,24 +28,23 @@ describe('If there are no guesses', () => {
 })
 
 describe('If there are guesses', () => {
-  test('Renders "guessed words" section', () => {
-    const guesses: Guess[] = [
+  let wrapper: ShallowWrapper
+  let guesses: Guess[]
+  beforeEach(() => {
+    guesses = [
       { word: 'train', letterMatches: 3 },
       { word: 'agile', letterMatches: 1 },
       { word: 'party', letterMatches: 5 },
     ]
-    const wrapper = setup({ guesses })
+    wrapper = setup({ guesses })
+  })
+
+  test('Renders "guessed words" section', () => {
     const guessesNode = findByTestAttr(wrapper, 'guesses')
     expect(guessesNode.length).toBe(1)
   })
 
   test('Renders the correct number of guesses', () => {
-    const guesses: Guess[] = [
-      { word: 'train', letterMatches: 3 },
-      { word: 'agile', letterMatches: 1 },
-      { word: 'party', letterMatches: 5 },
-    ]
-    const wrapper = setup({ guesses })
     const guessNode = findByTestAttr(wrapper, 'guess')
     expect(guessNode.length).toBe(guesses.length)
   })
