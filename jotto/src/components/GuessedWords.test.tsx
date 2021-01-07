@@ -35,7 +35,18 @@ describe('If there are guesses', () => {
       { word: 'party', letterMatches: 5 },
     ]
     const wrapper = setup({ guesses })
-    const guessedWords = findByTestAttr(wrapper, 'guessed-words')
-    expect(guessedWords.length).toBe(1)
+    const guessesNode = findByTestAttr(wrapper, 'guesses')
+    expect(guessesNode.length).toBe(1)
+  })
+
+  test('Renders the correct number of guesses', () => {
+    const guesses: Guess[] = [
+      { word: 'train', letterMatches: 3 },
+      { word: 'agile', letterMatches: 1 },
+      { word: 'party', letterMatches: 5 },
+    ]
+    const wrapper = setup({ guesses })
+    const guessNode = findByTestAttr(wrapper, 'guess')
+    expect(guessNode.length).toBe(guesses.length)
   })
 })
