@@ -50,4 +50,9 @@ describe('Word has been guessed successfully', () => {
     const inputBox = findByTestAttr(wrapper, 'input-box')
     expect(inputBox.length).toBe(0)
   })
+
+  test('Does not render submit button', () => {
+    const submitButton = findByTestAttr(wrapper, 'submit-button')
+    expect(submitButton.length).toBe(0)
+  })
 })
