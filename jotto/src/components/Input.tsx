@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 interface Props {}
 
 const Input: React.FC<Props> = () => {
-  return <div></div>
+  return <div data-test="component-input"></div>
 }
 
 const mapStateToProps = (state: RootState) => {
