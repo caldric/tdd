@@ -4,7 +4,7 @@ import Congrats from './components/Congrats'
 import GuessedWords from './components/GuessedWords'
 import './App.css'
 
-const App = () => {
+const App: React.FC = () => {
   return (
     <div className="App">
       <h1>Jotto</h1>
