@@ -6,4 +6,9 @@ describe('getLetterMatchCount', () => {
     const result = getLetterMatchCount('bones', secretWord)
     expect(result).toBe(0)
   })
+
+  test('Returns the correct count with 3 matching letters', () => {
+    const result = getLetterMatchCount('train', secretWord)
+    expect(result).toBe(3)
+  })
 })
