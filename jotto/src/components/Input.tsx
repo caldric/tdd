@@ -6,7 +6,12 @@ interface Props {}
 const Input: React.FC<Props> = () => {
   return (
     <div data-test="component-input">
-      <input data-test="input-box" type="text" />
+      <form>
+        <input data-test="input-box" type="text" />
+        <button data-test="submit-button" type="submit">
+          Submit
+        </button>
+      </form>
     </div>
   )
 }
