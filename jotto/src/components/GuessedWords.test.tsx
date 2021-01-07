@@ -34,7 +34,7 @@ describe('If there are guesses', () => {
       { word: 'agile', letterMatches: 1 },
       { word: 'party', letterMatches: 5 },
     ]
-    const wrapper = setup()
+    const wrapper = setup({ guesses })
     const guessedWords = findByTestAttr(wrapper, 'guessed-words')
     expect(guessedWords.length).toBe(1)
   })
