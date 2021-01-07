@@ -33,4 +33,12 @@ describe('No guesses have been made', () => {
     const submitButton = findByTestAttr(wrapper, 'submit-button')
     expect(submitButton.length).toBe(1)
   })
+
+  describe('Word has been guessed successfully', () => {
+    test('Renders component without errors', () => {
+      const wrapper = setup({ success: true })
+      const component = findByTestAttr(wrapper, 'component-input')
+      expect(component.length).toBe(1)
+    })
+  })
 })
