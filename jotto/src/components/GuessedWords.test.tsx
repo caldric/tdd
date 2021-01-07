@@ -19,6 +19,12 @@ describe('If there are no guesses', () => {
     const instructions = findByTestAttr(wrapper, 'guess-instructions')
     expect(instructions.text().length).not.toBe(0)
   })
+
+  test('Does not render "guessed words" section', () => {
+    const wrapper = setup()
+    const guessedWords = findByTestAttr(wrapper, 'guessed-words')
+    expect(guessedWords.length).toBe(0)
+  })
 })
 
 describe('If there are guesses', () => {
