@@ -11,4 +11,9 @@ describe('getLetterMatchCount', () => {
     const result = getLetterMatchCount('train', secretWord)
     expect(result).toBe(3)
   })
+
+  test('Returns the correct count with duplicate letters in the guess', () => {
+    const result = getLetterMatchCount('parka', secretWord)
+    expect(result).toBe(3)
+  })
 })
