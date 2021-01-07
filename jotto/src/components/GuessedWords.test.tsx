@@ -13,10 +13,12 @@ test('Renders without errors', () => {
   expect(component.length).toBe(1)
 })
 
-test('Renders instructions to guess a word at initial load', () => {
-  const wrapper = setup()
-  const instructions = findByTestAttr(wrapper, 'guess-instructions')
-  expect(instructions.text().length).not.toBe(0)
+describe('If there are no guesses', () => {
+  test('Renders instructions to guess a word at initial load', () => {
+    const wrapper = setup()
+    const instructions = findByTestAttr(wrapper, 'guess-instructions')
+    expect(instructions.text().length).not.toBe(0)
+  })
 })
 
 describe('If there are guesses', () => {

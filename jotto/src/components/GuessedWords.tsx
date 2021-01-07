@@ -1,5 +1,7 @@
 import React from 'react'
 
+interface Props {}
+
 const GuessedWords: React.FC<Props> = () => {
   return (
     <div data-test="component-guessed-words">
