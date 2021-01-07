@@ -4,7 +4,7 @@ interface Props {
   success?: boolean
 }
 
-const Congrats: React.FC<Props> = ({ success }) => {
+const Congrats: React.FC<Props> = ({ success = false }) => {
   const successMessage = (): JSX.Element | null => {
     return success ? <span data-test="congrats-message">Congrats</span> : null
   }
