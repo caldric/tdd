@@ -1,3 +1,4 @@
+import { ThunkAction } from 'redux-thunk'
 import { actionTypes } from './actions'
 import rootReducer from './reducers'
 
@@ -16,4 +17,12 @@ declare global {
 
   // State
   type RootState = ReturnType<typeof rootReducer>
+
+  // Redux Thunk
+  type AppThunk<ReturnType = void> = ThunkAction<
+    ReturnType,
+    RootState,
+    unknown,
+    Action<string>
+  >
 }

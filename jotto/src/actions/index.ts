@@ -1,8 +1,6 @@
 export const actionTypes = {
-  GUESS_WORD: 'GUESS_WORD',
+  CORRECT_GUESS: 'CORRECT_GUESS',
+  GUESS: 'GUESS',
 }
 
-export const guessWord = (guessedWord: Guess) => (
-  dispatch: any,
-  getState: any
-) => {}
+export const guess = (word: string): AppThunk => (dispatch, getState) => {}
