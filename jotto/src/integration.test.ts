@@ -18,9 +18,19 @@ describe('guessWord action dispatcher', () => {
       expect(newState).toEqual(expectedState)
     })
 
-    // test('Updates state correctly for successful guess', () => {
-    //   expect(true).toBe(true)
-    // })
+    test('Updates state correctly for successful guess', () => {
+      const secret = 'party'
+      const initialState: RootState = { guesses: [], success: false, secret }
+      const store = storeFactory(initialState)
+      store.dispatch(guess(word))
+      const newState = store.getState()
+      const expectedState = {
+        ...initialState,
+        success: true,
+        guesses: [{ word: secret, letterMatches: new Set(secret).size }],
+      }
+      expect(newState).toEqual(expectedState)
+    })
   })
 
   // describe('Words have been guessed', () => {
