@@ -6,14 +6,14 @@ describe('guessWord action dispatcher', () => {
     test('Updates state correctly for unsuccessful guess', () => {
       const secret = 'party'
       const word = 'train'
-      const initialState = { secret }
+      const initialState: RootState = { guesses: [], success: false, secret }
       const store = storeFactory(initialState)
       store.dispatch(guess(word))
       const newState = store.getState()
       const expectedState = {
         ...initialState,
         success: false,
-        guessedWords: [{ word, letterMatch: 3 }],
+        guesses: [{ word, letterMatches: 3 }],
       }
       expect(newState).toEqual(expectedState)
     })
