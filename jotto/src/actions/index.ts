@@ -9,9 +9,9 @@ export const actionTypes = {
 export const guess = (word: string): AppThunk => (dispatch, getState) => {
   const secret = getState().secret
   if (secret === word) {
-    // do something
+    // Dispatch CORRECT_GUESS action
   } else {
-    // do something else
+    // Dispatch GUESS action and payload
     const letterMatches = getLetterMatchCount(word, secret)
     const payload: Guess = { word, letterMatches }
     dispatch({ type: actionTypes.GUESS, payload })

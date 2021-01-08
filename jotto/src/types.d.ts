@@ -10,11 +10,16 @@ declare global {
   }
 
   // Actions
+  interface CorrectGuessAction {
+    type: typeof actionTypes.CORRECT_GUESS
+  }
+
   interface GuessAction {
     type: typeof actionTypes.GUESS
     payload: Guess
   }
-  type ActionTypes = GuessAction
+
+  type ActionTypes = CorrectGuessAction | GuessAction
 
   // State
   type RootState = ReturnType<typeof rootReducer>
@@ -24,6 +29,6 @@ declare global {
     ReturnType,
     RootState,
     unknown,
-    Action<string>
+    ActionTypes
   >
 }

@@ -1,6 +1,6 @@
 import { actionTypes } from '../actions'
 
-const guessesReducer = (state: Guess[] = [], action: ActionTypes): Guess[] => {
+const guessesReducer = (state: Guess[] = [], action: GuessAction): Guess[] => {
   switch (action.type) {
     case actionTypes.GUESS:
       return [...state, action.payload]
