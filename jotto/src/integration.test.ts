@@ -1,20 +1,18 @@
-import { createStore } from '@reduxjs/toolkit'
 import { storeFactory } from '../tests/testUtils'
 import { guess } from './actions'
 
 describe('guessWord action dispatcher', () => {
-  // Initialize variables for use in the beforeEach function
-  let secret: string
-  let initialState: RootState
-  let store: ReturnType<typeof storeFactory>
-
-  beforeEach(() => {
-    secret = 'party'
-    initialState = { guesses: [], success: false, secret }
-    store = storeFactory(initialState)
-  })
-
   describe('No words have been guessed', () => {
+    // Initialize variables for use in the beforeEach function
+    let secret: string
+    let initialState: RootState
+    let store: ReturnType<typeof storeFactory>
+
+    beforeEach(() => {
+      secret = 'party'
+      initialState = { guesses: [], success: false, secret }
+      store = storeFactory(initialState)
+    })
     test('Updates state correctly for unsuccessful guess', () => {
       // Initialize guess word
       const word = 'train'
