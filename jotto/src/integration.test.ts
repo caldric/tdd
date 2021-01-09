@@ -1,3 +1,4 @@
+import { createStore } from '@reduxjs/toolkit'
 import { storeFactory } from '../tests/testUtils'
 import { guess } from './actions'
 
@@ -46,18 +47,26 @@ describe('guessWord action dispatcher', () => {
   })
 
   describe('Words have been guessed', () => {
-    test('Updates state correctly for unsuccessful guess', () => {
+    let secret: string
+    let initialGuesses: Guess[]
+    let initialState: RootState
+    let store: ReturnType<typeof storeFactory>
+
+    beforeEach(() => {
       // Set the initial state
-      const secret = 'party'
-      const initialGuesses = [{ word: 'agile', letterMatches: 1 }]
-      const initialState: RootState = {
+      secret = 'party'
+      initialGuesses = [{ word: 'agile', letterMatches: 1 }]
+      initialState = {
         guesses: initialGuesses,
         secret,
         success: false,
       }
 
+      // Create store
+      store = storeFactory(initialState)
+    })
+    test('Updates state correctly for unsuccessful guess', () => {
       // Call action creator
-      const store = storeFactory(initialState)
       const word = 'train'
       store.dispatch(guess(word))
 
@@ -72,17 +81,7 @@ describe('guessWord action dispatcher', () => {
     })
 
     test('Updates state correctly for successful guess', () => {
-      // Set the initial state
-      const secret = 'party'
-      const initialGuesses = [{ word: 'agile', letterMatches: 1 }]
-      const initialState: RootState = {
-        guesses: initialGuesses,
-        secret,
-        success: false,
-      }
-
       // Call action creator
-      const store = storeFactory(initialState)
       store.dispatch(guess(secret))
 
       // Get the current state and it with expected state
