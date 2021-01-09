@@ -10,6 +10,7 @@ export const guess = (word: string): AppThunk => (dispatch, getState) => {
   const secret = getState().secret
   if (secret === word) {
     // Dispatch CORRECT_GUESS action
+    dispatch({ type: actionTypes.CORRECT_GUESS })
   } else {
     // Dispatch GUESS action and payload
     const letterMatches = getLetterMatchCount(word, secret)

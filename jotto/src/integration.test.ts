@@ -22,12 +22,11 @@ describe('guessWord action dispatcher', () => {
       const secret = 'party'
       const initialState: RootState = { guesses: [], success: false, secret }
       const store = storeFactory(initialState)
-      store.dispatch(guess(word))
+      store.dispatch(guess(secret))
       const newState = store.getState()
       const expectedState = {
         ...initialState,
         success: true,
-        guesses: [{ word: secret, letterMatches: new Set(secret).size }],
       }
       expect(newState).toEqual(expectedState)
     })
