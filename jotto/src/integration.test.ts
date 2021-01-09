@@ -45,12 +45,34 @@ describe('guessWord action dispatcher', () => {
     })
   })
 
-  // describe('Words have been guessed', () => {
-  //   test('Updates state correctly for unsuccessful guess', () => {
-  //     expect(true).toBe(true)
-  //   })
-  //   test('Updates state correctly for successful guess', () => {
-  //     expect(true).toBe(true)
-  //   })
-  // })
+  describe('Words have been guessed', () => {
+    test('Updates state correctly for unsuccessful guess', () => {
+      // Set the initial state
+      const secret = 'party'
+      const initialGuesses = [{ word: 'agile', letterMatches: 1 }]
+      const initialState: RootState = {
+        guesses: initialGuesses,
+        secret,
+        success: false,
+      }
+
+      // Call action creator
+      const store = storeFactory(initialState)
+      const word = 'train'
+      store.dispatch(guess(word))
+
+      // Get the current state and it with expected state
+      const newState = store.getState()
+      const expectedState = {
+        ...initialState,
+        success: false,
+        guesses: [...initialGuesses, { letterMatches: 3, word }],
+      }
+      expect(newState).toEqual(expectedState)
+    })
+
+    // test('Updates state correctly for successful guess', () => {
+    //   expect(true).toBe(true)
+    // })
+  })
 })
