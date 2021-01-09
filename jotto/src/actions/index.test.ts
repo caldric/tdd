@@ -13,7 +13,7 @@ describe('getSecretWord action creator', () => {
 
   test('Adds secret word to state when requested', async () => {
     const secret = 'party'
-    const store = storeFactory({ guesses: [], secret, success: false })
+    const store = storeFactory({ guesses: {}, secret, success: false })
 
     moxios.wait(() => {
       const request = moxios.requests.mostRecent()

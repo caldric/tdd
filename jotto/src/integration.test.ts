@@ -10,7 +10,7 @@ describe('guessWord action dispatcher', () => {
 
     beforeEach(() => {
       secret = 'party'
-      initialState = { guesses: [], success: false, secret }
+      initialState = { guesses: {}, success: false, secret }
       store = storeFactory(initialState)
     })
     test('Updates state correctly for unsuccessful guess', () => {
@@ -26,7 +26,7 @@ describe('guessWord action dispatcher', () => {
       const expectedState = {
         ...initialState,
         success: false,
-        guesses: [{ word, letterMatches: 3 }],
+        guesses: { [word]: { word, letterMatches: 3 } },
       }
       expect(newState).toEqual(expectedState)
     })
@@ -48,14 +48,14 @@ describe('guessWord action dispatcher', () => {
 
   describe('Words have been guessed', () => {
     let secret: string
-    let initialGuesses: Guess[]
+    let initialGuesses: Record<string, Guess>
     let initialState: RootState
     let store: ReturnType<typeof storeFactory>
 
     beforeEach(() => {
       // Set the initial state
       secret = 'party'
-      initialGuesses = [{ word: 'agile', letterMatches: 1 }]
+      initialGuesses = { agile: { word: 'agile', letterMatches: 1 } }
       initialState = {
         guesses: initialGuesses,
         secret,
@@ -76,7 +76,7 @@ describe('guessWord action dispatcher', () => {
       const expectedState = {
         ...initialState,
         success: false,
-        guesses: [...initialGuesses, { letterMatches: 3, word }],
+        guesses: { ...initialGuesses, [word]: { letterMatches: 3, word } },
       }
       expect(newState).toEqual(expectedState)
     })
