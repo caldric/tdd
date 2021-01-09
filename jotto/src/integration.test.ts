@@ -20,6 +20,7 @@ describe('guessWord action dispatcher', () => {
       const word = 'train'
 
       // Call guess action creator
+      // @ts-ignore
       store.dispatch(guess(word))
 
       // Compare actual state to expected state
@@ -34,6 +35,7 @@ describe('guessWord action dispatcher', () => {
 
     test('Updates state correctly for successful guess', () => {
       // Call guess action creator
+      // @ts-ignore
       store.dispatch(guess(secret))
 
       // Compare actual state with expected state
@@ -68,6 +70,7 @@ describe('guessWord action dispatcher', () => {
     test('Updates state correctly for unsuccessful guess', () => {
       // Call action creator
       const word = 'train'
+      // @ts-ignore
       store.dispatch(guess(word))
 
       // Get the current state and it with expected state
@@ -82,6 +85,7 @@ describe('guessWord action dispatcher', () => {
 
     test('Updates state correctly for successful guess', () => {
       // Call action creator
+      // @ts-ignore
       store.dispatch(guess(secret))
 
       // Get the current state and it with expected state
