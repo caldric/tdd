@@ -2,13 +2,26 @@ import { storeFactory } from '../tests/testUtils'
 import { guess } from './actions'
 
 describe('guessWord action dispatcher', () => {
+  // Initialize variables for use in the beforeEach function
+  let secret: string
+  let initialState: RootState
+  let store: ReturnType<typeof storeFactory>
+
+  beforeEach(() => {
+    secret = 'party'
+    initialState = { guesses: [], success: false, secret }
+    store = storeFactory(initialState)
+  })
+
   describe('No words have been guessed', () => {
     test('Updates state correctly for unsuccessful guess', () => {
-      const secret = 'party'
+      // Initialize guess word
       const word = 'train'
-      const initialState: RootState = { guesses: [], success: false, secret }
-      const store = storeFactory(initialState)
+
+      // Call guess action creator
       store.dispatch(guess(word))
+
+      // Compare actual state to expected state
       const newState = store.getState()
       const expectedState = {
         ...initialState,
@@ -19,10 +32,10 @@ describe('guessWord action dispatcher', () => {
     })
 
     test('Updates state correctly for successful guess', () => {
-      const secret = 'party'
-      const initialState: RootState = { guesses: [], success: false, secret }
-      const store = storeFactory(initialState)
+      // Call guess action creator
       store.dispatch(guess(secret))
+
+      // Compare actual state with expected state
       const newState = store.getState()
       const expectedState = {
         ...initialState,
