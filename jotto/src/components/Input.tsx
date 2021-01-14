@@ -1,6 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
+
 import { RootState } from '../store'
+import { guess } from '../actions'
 
 interface Props {
   success: boolean
@@ -38,4 +40,4 @@ const mapStateToProps = (state: RootState) => {
   return { success: state.success }
 }
 
-export default connect(mapStateToProps)(Input)
+export default connect(mapStateToProps, { guess })(Input)

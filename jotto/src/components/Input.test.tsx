@@ -71,7 +71,8 @@ describe('Redux props', () => {
 
   test('guessWord action creator is a function prop', () => {
     const wrapper = setup(undefined)
-    const guessWordProp = wrapper.instance().props.guessWord
+    // @ts-expect-error
+    const guessWordProp = wrapper.instance().props.guess
     expect(guessWordProp).toBeInstanceOf(Function)
   })
 })
