@@ -7,6 +7,7 @@ import Input from './Input'
 
 const setup = (initialState: RootState) => {
   const store = storeFactory(initialState)
+  // @ts-expect-error
   const wrapper = shallow(<Input store={store} />)
     .dive()
     .dive()
@@ -18,7 +19,7 @@ const setup = (initialState: RootState) => {
 describe('No guesses have been made', () => {
   let wrapper: ShallowWrapper
   beforeEach(() => {
-    wrapper = setup({ success: false })
+    wrapper = setup({ success: false, secret: '', guesses: {} })
   })
 
   test('Renders component without errors', () => {
@@ -40,7 +41,7 @@ describe('No guesses have been made', () => {
 describe('Word has been guessed successfully', () => {
   let wrapper: ShallowWrapper
   beforeEach(() => {
-    wrapper = setup({ success: true })
+    wrapper = setup({ success: true, secret: '', guesses: {} })
   })
 
   test('Renders component without errors', () => {
