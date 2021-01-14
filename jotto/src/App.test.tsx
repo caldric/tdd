@@ -32,5 +32,14 @@ describe('Redux properties', () => {
     const secretProp = wrapper.instance().props.secret
     expect(secretProp).toBe(secret)
   })
-  test('Has access to guesses state', () => {})
+
+  test('Has access to guesses state', () => {
+    const guesses: Record<string, Guess> = {
+      agile: { word: 'agile', letterMatches: 1 },
+    }
+    const wrapper = setup({ ...defaultState, guesses })
+    // @ts-expect-error
+    const guessesProp = wrapper.instance().props.guesses
+    expect(guessesProp).toBe(guesses)
+  })
 })
