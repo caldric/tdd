@@ -1,5 +1,7 @@
 import React from 'react'
 import { shallow, ShallowWrapper } from 'enzyme'
+
+import { RootState } from '../store'
 import { findByTestAttr, storeFactory } from '../../tests/testUtils'
 import Input from './Input'
 

@@ -1,3 +1,4 @@
+import { AppThunk } from '../store'
 import { getLetterMatchCount } from '../helpers'
 
 export const actionTypes = {
@@ -5,6 +6,17 @@ export const actionTypes = {
   GUESS: 'GUESS',
   GET_SECRET: 'GET_SECRET',
 }
+
+export interface CorrectGuessAction {
+  type: typeof actionTypes.CORRECT_GUESS
+}
+
+export interface GuessAction {
+  type: typeof actionTypes.GUESS
+  payload: Guess
+}
+
+export type ActionTypes = CorrectGuessAction | GuessAction
 
 export const guess = (word: string): AppThunk => (dispatch, getState) => {
   const secret = getState().secret
