@@ -30,8 +30,8 @@ class App extends React.Component<Props> {
 }
 
 const mapStateToProps = (state: RootState) => {
-  const { success, secret } = state
-  return { success, secret }
+  const { success, secret, guesses } = state
+  return { success, secret, guesses }
 }
 
 export default connect(mapStateToProps)(App)
