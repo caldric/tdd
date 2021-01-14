@@ -3,7 +3,7 @@ import { shallow } from 'enzyme'
 
 import { RootState } from './store'
 import { storeFactory } from '../tests/testUtils'
-import App from './App'
+import App, { UnconnectedApp } from './App'
 
 const defaultState = { guesses: {}, secret: '', success: false }
 
@@ -49,4 +49,21 @@ describe('Redux properties', () => {
     const getSecretProp = wrapper.instance().props.getSecret
     expect(getSecretProp).toBeInstanceOf(Function)
   })
+})
+
+test('getSecret() runs on mount', () => {
+  const getSecretMock = jest.fn()
+
+  const props = { ...defaultState, getSecret: getSecretMock }
+
+  // Replace action creator with mock function
+  const wrapper = shallow(<UnconnectedApp {...props} />)
+
+  // Run lifecycle method
+  // @ts-expect-error
+  wrapper.instance()?.componentDidMount()
+
+  // Check number of calls to action creator
+  const getSecretCallCount = getSecretMock.mock.calls.length
+  expect(getSecretCallCount).toBe(1)
 })

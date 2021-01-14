@@ -14,9 +14,14 @@ import './App.css'
 interface Props {
   success: boolean
   guesses: Record<string, Guess>
+  getSecret: () => void
 }
 
-class App extends React.Component<Props> {
+export class UnconnectedApp extends React.Component<Props> {
+  componentDidMount() {
+    this.props.getSecret()
+  }
+
   render() {
     return (
       <div className="container">
@@ -34,4 +39,4 @@ const mapStateToProps = (state: RootState) => {
   return { success, secret, guesses }
 }
 
-export default connect(mapStateToProps, { getSecret })(App)
+export default connect(mapStateToProps, { getSecret })(UnconnectedApp)
