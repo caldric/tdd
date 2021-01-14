@@ -5,7 +5,7 @@ import { RootState } from '../store'
 import { findByTestAttr, storeFactory } from '../../tests/testUtils'
 import Input from './Input'
 
-const setup = (initialState: RootState) => {
+const setup = (initialState: RootState | undefined) => {
   const store = storeFactory(initialState)
   // @ts-expect-error
   const wrapper = shallow(<Input store={store} />)
@@ -67,5 +67,11 @@ describe('Redux props', () => {
     // @ts-expect-error
     const successProp = wrapper.instance().props.success
     expect(successProp).toBe(success)
+  })
+
+  test('guessWord action creator is a function prop', () => {
+    const wrapper = setup(undefined)
+    const guessWordProp = wrapper.instance().props.guessWord
+    expect(guessWordProp).toBeInstanceOf(Function)
   })
 })
