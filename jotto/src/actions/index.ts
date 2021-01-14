@@ -1,32 +1,51 @@
+import axios from 'axios'
 import { AppThunk } from '../store'
 import { getLetterMatchCount } from '../helpers'
 
-export const actionTypes = {
-  CORRECT_GUESS: 'CORRECT_GUESS',
-  GUESS: 'GUESS',
-  GET_SECRET: 'GET_SECRET',
+// Actions
+export const CORRECT_GUESS = 'CORRECT_GUESS'
+export const GUESS = 'GUESS'
+export const GET_SECRET = 'GET_SECRET'
+
+export interface GenericAction {
+  type: ''
 }
 
 export interface CorrectGuessAction {
-  type: typeof actionTypes.CORRECT_GUESS
+  type: typeof CORRECT_GUESS
 }
 
 export interface GuessAction {
-  type: typeof actionTypes.GUESS
+  type: typeof GUESS
   payload: Guess
 }
 
-export type ActionTypes = CorrectGuessAction | GuessAction
+export interface GetSecretAction {
+  type: typeof GET_SECRET
+  payload: string
+}
 
+export type ActionTypes =
+  | GenericAction
+  | CorrectGuessAction
+  | GuessAction
+  | GetSecretAction
+
+// Action creators
 export const guess = (word: string): AppThunk => (dispatch, getState) => {
   const secret = getState().secret
   if (secret === word) {
     // Dispatch CORRECT_GUESS action
-    dispatch({ type: actionTypes.CORRECT_GUESS })
+    dispatch({ type: CORRECT_GUESS })
   } else {
     // Dispatch GUESS action and payload
     const letterMatches = getLetterMatchCount(word, secret)
     const payload: Guess = { word, letterMatches }
-    dispatch({ type: actionTypes.GUESS, payload })
+    dispatch({ type: GUESS, payload })
   }
+}
+
+export const getSecret = (): AppThunk => async (dispatch) => {
+  const { data: payload } = await axios.get('http://localhost:3000')
+  dispatch({ type: GET_SECRET, payload })
 }

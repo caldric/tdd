@@ -1,11 +1,11 @@
-import { actionTypes } from '../actions'
+import { ActionTypes, CORRECT_GUESS } from '../actions'
 
 const successReducer = (
   state: boolean = false,
   action: ActionTypes
 ): boolean => {
   switch (action.type) {
-    case actionTypes.CORRECT_GUESS:
+    case CORRECT_GUESS:
       return true
     default:
       return state
