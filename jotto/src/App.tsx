@@ -3,13 +3,17 @@ import { connect } from 'react-redux'
 
 import { RootState } from './store'
 import { getSecret } from './actions'
+
 import Congrats from './components/Congrats'
 import GuessedWords from './components/GuessedWords'
+import Input from './components/Input'
+
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.css'
 
 interface Props {
   success: boolean
+  guesses: Record<string, Guess>
 }
 
 class App extends React.Component<Props> {
@@ -17,14 +21,9 @@ class App extends React.Component<Props> {
     return (
       <div className="container">
         <h1>Jotto</h1>
-        <Congrats success={true} />
-        <GuessedWords
-          guesses={[
-            { word: 'train', letterMatches: 3 },
-            { word: 'agile', letterMatches: 1 },
-            { word: 'party', letterMatches: 5 },
-          ]}
-        />
+        <Congrats success={this.props.success} />
+        <Input />
+        <GuessedWords guesses={this.props.guesses} />
       </div>
     )
   }
