@@ -18,9 +18,17 @@ describe('Redux properties', () => {
   test('Has access to success state', () => {
     const success = true
     const wrapper = setup({ guesses: {}, secret: '', success })
+    // @ts-expect-error
     const successProp = wrapper.instance().props.success
     expect(successProp).toBe(success)
   })
-  test('Has access to secret state', () => {})
+
+  test('Has access to secret state', () => {
+    const secret = 'party'
+    const wrapper = setup({ guesses: {}, success: false, secret })
+    // @ts-expect-error
+    const secretProp = wrapper.instance().props.secret
+    expect(secretProp).toBe(secret)
+  })
   test('Has access to guesses state', () => {})
 })
