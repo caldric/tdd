@@ -7,7 +7,11 @@ import GuessedWords from './components/GuessedWords'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.css'
 
-class App extends React.Component {
+interface Props {
+  success: boolean
+}
+
+class App extends React.Component<Props> {
   render() {
     return (
       <div className="container">
