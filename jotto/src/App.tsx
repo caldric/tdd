@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 import { RootState } from './store'
+import { getSecret } from './actions'
 import Congrats from './components/Congrats'
 import GuessedWords from './components/GuessedWords'
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -34,4 +35,4 @@ const mapStateToProps = (state: RootState) => {
   return { success, secret, guesses }
 }
 
-export default connect(mapStateToProps)(App)
+export default connect(mapStateToProps, { getSecret })(App)
