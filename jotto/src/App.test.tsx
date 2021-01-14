@@ -42,4 +42,11 @@ describe('Redux properties', () => {
     const guessesProp = wrapper.instance().props.guesses
     expect(guessesProp).toBe(guesses)
   })
+
+  test('getSecret action creator is a function on the props', () => {
+    const wrapper = setup(undefined)
+    // @ts-expect-error
+    const getSecretProp = wrapper.instance().props.getSecret
+    expect(getSecretProp).toBeInstanceOf(Function)
+  })
 })
