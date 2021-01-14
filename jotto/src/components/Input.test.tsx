@@ -59,3 +59,13 @@ describe('Word has been guessed successfully', () => {
     expect(submitButton.length).toBe(0)
   })
 })
+
+describe('Redux props', () => {
+  test('Has success state as a prop', () => {
+    const success = true
+    const wrapper = setup({ guesses: {}, secret: '', success })
+    // @ts-expect-error
+    const successProp = wrapper.instance().props.success
+    expect(successProp).toBe(success)
+  })
+})

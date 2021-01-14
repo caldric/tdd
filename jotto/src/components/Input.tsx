@@ -1,13 +1,16 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { RootState } from '../store'
 
 interface Props {
   success: boolean
 }
 
-const Input: React.FC<Props> = ({ success }) => {
-  const renderForm = () =>
-    !success ? (
+class Input extends React.Component<Props> {
+  renderForm() {
+    const { success } = this.props
+
+    return !success ? (
       <form className="form-inline">
         <input
           data-test="input-box"
@@ -24,8 +27,11 @@ const Input: React.FC<Props> = ({ success }) => {
         </button>
       </form>
     ) : null
+  }
 
-  return <div data-test="component-input">{renderForm()}</div>
+  render() {
+    return <div data-test="component-input">{this.renderForm()}</div>
+  }
 }
 
 const mapStateToProps = (state: RootState) => {
