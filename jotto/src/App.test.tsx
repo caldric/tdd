@@ -61,7 +61,7 @@ test('getSecret() runs on mount', () => {
 
   // Run lifecycle method
   // @ts-expect-error
-  wrapper.instance()?.componentDidMount()
+  wrapper.instance().componentDidMount()
 
   // Check number of calls to action creator
   const getSecretCallCount = getSecretMock.mock.calls.length
