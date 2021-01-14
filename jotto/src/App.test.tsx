@@ -5,6 +5,8 @@ import { RootState } from './store'
 import { storeFactory } from '../tests/testUtils'
 import App from './App'
 
+const defaultState = { guesses: {}, secret: '', success: false }
+
 const setup = (initialState: RootState | undefined) => {
   const store = storeFactory(initialState)
   // @ts-expect-error
@@ -17,7 +19,7 @@ const setup = (initialState: RootState | undefined) => {
 describe('Redux properties', () => {
   test('Has access to success state', () => {
     const success = true
-    const wrapper = setup({ guesses: {}, secret: '', success })
+    const wrapper = setup({ ...defaultState, success })
     // @ts-expect-error
     const successProp = wrapper.instance().props.success
     expect(successProp).toBe(success)
@@ -25,7 +27,7 @@ describe('Redux properties', () => {
 
   test('Has access to secret state', () => {
     const secret = 'party'
-    const wrapper = setup({ guesses: {}, success: false, secret })
+    const wrapper = setup({ ...defaultState, secret })
     // @ts-expect-error
     const secretProp = wrapper.instance().props.secret
     expect(secretProp).toBe(secret)
