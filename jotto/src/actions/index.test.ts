@@ -23,7 +23,6 @@ describe('getSecretWord action creator', () => {
     // @ts-ignore
     await store.dispatch(getSecret())
     const { secret: result } = store.getState()
-    // expect(result).toBe(secret)
-    expect(result).toBe('wrong')
+    expect(result).toBe(secret)
   })
 })
