@@ -78,41 +78,39 @@ describe('Redux props', () => {
 })
 
 describe('Guess word form', () => {
-  test('Submitting form calls action creator', () => {
+  let guessMock: jest.Mock<any, any>
+  let props: { success: boolean; guess: (word: string) => void }
+  let wrapper: ShallowWrapper
+  let form: ShallowWrapper
+
+  beforeEach(() => {
     // Create mock action creator function
-    const guessMock = jest.fn()
-    const props = { success: false, guess: guessMock }
+    guessMock = jest.fn()
+    props = { success: false, guess: guessMock }
 
     // Create wrapper
-    const wrapper = shallow(<UInput {...props} />)
+    wrapper = shallow(<UInput {...props} />)
 
-    // Simulate form submission
-    const form = findByTestAttr(wrapper, 'guess-form')
+    // Form
+    form = findByTestAttr(wrapper, 'guess-form')
+  })
+
+  test('Submitting form calls action creator', () => {
+    // Submit form and check how many times action creator was called
     form.simulate('submit', { preventDefault: () => {} })
-
-    // Check if action creator has been called exactly once
-    const guessCallCount: number = guessMock.mock.calls.length
-    expect(guessCallCount).toBe(1)
+    expect(guessMock.mock.calls).toHaveLength(1)
   })
 
   test('Action creator runs with correct argument', () => {
-    // Create mock action creator function
-    const guessMock = jest.fn()
-    const props = { success: false, guess: guessMock }
-
-    // Create wrapper
-    const wrapper = shallow(<UInput {...props} />)
-
     // Simulate user typing into the text box
     const word = 'agile'
     const input = findByTestAttr(wrapper, 'input-box')
     input.simulate('change', { target: { value: word } })
 
     // Simulate form submission
-    const form = findByTestAttr(wrapper, 'guess-form')
     form.simulate('submit', { preventDefault: () => {} })
 
-    // Check if action creator has been called exactly once
+    // Check if action creator has an argument of word
     expect(guessMock).toHaveBeenCalledWith(word)
   })
 })
