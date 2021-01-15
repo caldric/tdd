@@ -6,9 +6,10 @@ import { guess } from '../actions'
 
 interface Props {
   success: boolean
+  guess: typeof guess
 }
 
-class Input extends React.Component<Props> {
+export class Input extends React.Component<Props> {
   renderForm() {
     const { success } = this.props
 

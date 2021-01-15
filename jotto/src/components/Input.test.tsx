@@ -3,7 +3,7 @@ import { shallow, ShallowWrapper } from 'enzyme'
 
 import { RootState } from '../store'
 import { findByTestAttr, storeFactory } from '../../tests/testUtils'
-import Input from './Input'
+import Input, { Input as UInput } from './Input'
 
 const setup = (initialState: RootState | undefined) => {
   const store = storeFactory(initialState)
@@ -74,5 +74,26 @@ describe('Redux props', () => {
     // @ts-expect-error
     const guessWordProp = wrapper.instance().props.guess
     expect(guessWordProp).toBeInstanceOf(Function)
+  })
+})
+
+describe('Form submit button', () => {
+  test('Clicking button calls action creator', () => {
+    // Create mock action creator function
+    const guessMock = jest.fn()
+    const props = { success: false, guess: guessMock }
+
+    // Create wrapper
+    const wrapper = shallow(<UInput {...props} />)
+
+    // Find the submit button
+    const submitButton = wrapper.find('#submit-button')
+
+    // Click submit button
+    submitButton.simulate('click')
+
+    // Check if acction creator has been called exactly once
+    const guessCallCount: number = guessMock.mock.calls.length
+    expect(guessedCallCount).toBe(1)
   })
 })
