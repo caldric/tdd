@@ -6,15 +6,24 @@ import { guess } from '../actions'
 
 interface Props {
   success: boolean
-  guess: typeof guess
+  guess: (word: string) => void
 }
 
 export class Input extends React.Component<Props> {
+  handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
+    this.props.guess('')
+  }
+
   renderForm() {
     const { success } = this.props
 
     return !success ? (
-      <form className="form-inline">
+      <form
+        className="form-inline"
+        data-test="guess-form"
+        onSubmit={this.handleSubmit}
+      >
         <input
           data-test="input-box"
           className="mb-2 mx-sm-3"

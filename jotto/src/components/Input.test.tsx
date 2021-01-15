@@ -77,8 +77,8 @@ describe('Redux props', () => {
   })
 })
 
-describe('Form submit button', () => {
-  test('Clicking button calls action creator', () => {
+describe('Guess word form', () => {
+  test('Submitting form calls action creator', () => {
     // Create mock action creator function
     const guessMock = jest.fn()
     const props = { success: false, guess: guessMock }
@@ -86,14 +86,12 @@ describe('Form submit button', () => {
     // Create wrapper
     const wrapper = shallow(<UInput {...props} />)
 
-    // Find the submit button
-    const submitButton = wrapper.find('#submit-button')
-
-    // Click submit button
-    submitButton.simulate('click')
+    // Simulate form submission
+    const form = findByTestAttr(wrapper, 'guess-form')
+    form.simulate('submit', { preventDefault: () => {} })
 
     // Check if acction creator has been called exactly once
     const guessCallCount: number = guessMock.mock.calls.length
-    expect(guessedCallCount).toBe(1)
+    expect(guessCallCount).toBe(1)
   })
 })
