@@ -10,9 +10,11 @@ interface Props {
 }
 
 export class Input extends React.Component<Props> {
+  state = { word: '' }
+
   handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
-    this.props.guess('')
+    this.props.guess(this.state.word)
   }
 
   renderForm() {
@@ -29,6 +31,8 @@ export class Input extends React.Component<Props> {
           className="mb-2 mx-sm-3"
           type="text"
           placeholder="Enter guess"
+          value={this.state.word}
+          onChange={(event) => this.setState({ word: event.target.value })}
         />
         <button
           data-test="submit-button"
