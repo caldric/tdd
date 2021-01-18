@@ -124,4 +124,18 @@ describe('Guess word form', () => {
     // Check if action creator has an argument of word
     expect(guessMock).toHaveBeenCalledWith(word)
   })
+
+  test('Input box returns to empty after submit is clicked', () => {
+    // Simulate user typing into the text box
+    const word = 'agile'
+    const input = findByTestAttr(wrapper, 'input-box')
+    input.simulate('change', { target: { value: word } })
+
+    // Simulate form submission
+    form.simulate('submit', { preventDefault: () => {} })
+
+    // Check if "word" state has a value of empty string after submission
+    const value = wrapper.state('word')
+    expect(value).toBe('')
+  })
 })

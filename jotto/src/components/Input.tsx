@@ -17,6 +17,7 @@ export class Input extends React.Component<Props> {
     const { word } = this.state
     if (word && word.length > 0) {
       this.props.guess(word)
+      this.setState({ word: '' })
     }
   }
 
