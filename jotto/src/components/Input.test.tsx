@@ -95,6 +95,12 @@ describe('Guess word form', () => {
     form = findByTestAttr(wrapper, 'guess-form')
   })
 
+  test('Submitting form with blank input does not call action creator', () => {
+    // Submit form and check how many times action creator was called
+    form.simulate('submit', { preventDefault: () => {} })
+    expect(guessMock.mock.calls).toHaveLength(0)
+  })
+
   test('Submitting form with non-empty input calls action creator', () => {
     // Simulate user typing into the text box
     const word = 'agile'
@@ -117,11 +123,5 @@ describe('Guess word form', () => {
 
     // Check if action creator has an argument of word
     expect(guessMock).toHaveBeenCalledWith(word)
-  })
-
-  test('Submitting form with blank input does not call action creator', () => {
-    // Submit form and check how many times action creator was called
-    form.simulate('submit', { preventDefault: () => {} })
-    expect(guessMock.mock.calls).toHaveLength(0)
   })
 })
