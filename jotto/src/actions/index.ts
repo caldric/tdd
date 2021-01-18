@@ -46,6 +46,6 @@ export const guess = (word: string): AppThunk => (dispatch, getState) => {
 }
 
 export const getSecret = (): AppThunk => async (dispatch) => {
-  const { data: payload } = await axios.get('http://localhost:3000')
+  const { data: payload } = await axios.get('http://localhost:3030')
   dispatch({ type: GET_SECRET, payload })
 }

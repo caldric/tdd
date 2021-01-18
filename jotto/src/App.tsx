@@ -13,6 +13,7 @@ import './App.css'
 
 interface Props {
   success: boolean
+  secret: string
   guesses: Record<string, Guess>
   getSecret: () => void
 }
@@ -26,6 +27,9 @@ export class UnconnectedApp extends React.Component<Props> {
     return (
       <div className="container">
         <h1>Jotto</h1>
+        <div>
+          {this.props.secret && `The secret word is ${this.props.secret}`}
+        </div>
         <Congrats success={this.props.success} />
         <Input />
         <GuessedWords guesses={this.props.guesses} />
