@@ -101,41 +101,33 @@ describe('Guess word form', () => {
     expect(guessMock.mock.calls).toHaveLength(0)
   })
 
-  test('Submitting form with non-empty input calls action creator', () => {
-    // Simulate user typing into the text box
-    const word = 'agile'
-    const input = findByTestAttr(wrapper, 'input-box')
-    input.simulate('change', { target: { value: word } })
+  describe('Submitting form with a non-empty input', () => {
+    let word: string
+    let input: ShallowWrapper
 
-    // Submit form and check how many times action creator was called
-    form.simulate('submit', { preventDefault: () => {} })
-    expect(guessMock.mock.calls).toHaveLength(1)
-  })
+    beforeEach(() => {
+      // Simulate user typing into the text box
+      word = 'agile'
+      input = findByTestAttr(wrapper, 'input-box')
+      input.simulate('change', { target: { value: word } })
 
-  test('Action creator runs with correct argument', () => {
-    // Simulate user typing into the text box
-    const word = 'agile'
-    const input = findByTestAttr(wrapper, 'input-box')
-    input.simulate('change', { target: { value: word } })
+      // Simulate form submission
+      form.simulate('submit', { preventDefault: () => {} })
+    })
 
-    // Simulate form submission
-    form.simulate('submit', { preventDefault: () => {} })
+    test('Calls action creator once', () => {
+      // Check how many times the action creator was called
+      expect(guessMock.mock.calls).toHaveLength(1)
+    })
 
-    // Check if action creator has an argument of word
-    expect(guessMock).toHaveBeenCalledWith(word)
-  })
+    test('Action creator runs with the correct argument', () => {
+      // Check if action creator has an argument of word
+      expect(guessMock).toHaveBeenCalledWith(word)
+    })
 
-  test('Input box returns to empty after submit is clicked', () => {
-    // Simulate user typing into the text box
-    const word = 'agile'
-    const input = findByTestAttr(wrapper, 'input-box')
-    input.simulate('change', { target: { value: word } })
-
-    // Simulate form submission
-    form.simulate('submit', { preventDefault: () => {} })
-
-    // Check if "word" state has a value of empty string after submission
-    const value = wrapper.state('word')
-    expect(value).toBe('')
+    test('Input box returns to empty after submit is clicked', () => {
+      // Check if "word" state has a value of empty string after submission
+      expect(wrapper.state('word')).toBe('')
+    })
   })
 })
