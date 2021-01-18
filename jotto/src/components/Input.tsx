@@ -14,7 +14,10 @@ export class Input extends React.Component<Props> {
 
   handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
-    this.props.guess(this.state.word)
+    const { word } = this.state
+    if (word && word.length > 0) {
+      this.props.guess(word)
+    }
   }
 
   renderForm() {
